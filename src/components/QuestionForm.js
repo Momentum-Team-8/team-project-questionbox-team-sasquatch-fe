@@ -11,10 +11,10 @@ export const QuestionForm = () => {
       <form>
         <h1>Question Form</h1>
         <label>
-          Title:
+          Type Question Title:
           <input type='text' value={question} onChange={handleChange} />
         </label>
-        <textarea>Hello there, this is some text in a text area</textarea>
+        Type Question Body: <textarea>Hello there, this is some text in a text area</textarea>
         <p>{question}</p>
         <input type="submit" value="Submit" />
       </form>
