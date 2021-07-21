@@ -4,8 +4,9 @@ import { WelcomePage } from "./components/WelcomePage";
 import { QuestionForm } from "./components/QuestionForm";
 import { AnswerForm } from "./components/AnswerForm";
 import { Registration } from "./components/Registration";
+import { Questions } from "./components/Questions";
 
-function App () {
+function App() {
   return (
     <div className="App">
       <Header />
@@ -13,6 +14,8 @@ function App () {
       <QuestionForm />
       <AnswerForm />
       <Registration />
+      <Questions />
+      console.log(ask)
     </div>
   );
 }

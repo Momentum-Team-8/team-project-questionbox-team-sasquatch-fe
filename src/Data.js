@@ -1,8 +1,4 @@
-import React, { useState } from 'react'
-import { results } from '../Data'
-
-export const Questions = () => {
-  const [questions] = useState([
+export const results = [
     {
         “Title”: “Is this right?”,
         “Body”:  “I sure hope it is, I don’t want to have to redo all of this.”,
@@ -39,18 +35,4 @@ export const Questions = () => {
         “Answers”: [an array of answers]
           
     }
-])
-return (
-    <div>
-        <h1>All questions</h1>
-        <div>
-            {questions.map((ask, idx) => {
-                return (
-                    console.log(ask)
-                )
-            }
-            )
-            }
-        </div>
-    </div>
-)
+]
