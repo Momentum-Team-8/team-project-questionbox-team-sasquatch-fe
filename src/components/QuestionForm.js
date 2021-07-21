@@ -1,14 +1,21 @@
 import React from "react";
+import { useState } from 'react'
 
 export const QuestionForm = () => {
+  const [question, setQuestion] = useState('')
+  const handleChange = (event) => {
+    setQuestion(event.target.value)
+  }
   return (
     <div>
       <form>
+        <h1>Question Form</h1>
         <label>
           Title:
-          <input type="text" name="name" />
+          <input type='text' value={question} onChange={handleChange} />
         </label>
         <textarea>Hello there, this is some text in a text area</textarea>
+        <p>{question}</p>
         <input type="submit" value="Submit" />
       </form>
     </div>
