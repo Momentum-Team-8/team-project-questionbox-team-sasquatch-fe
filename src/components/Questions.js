@@ -1,56 +1,48 @@
-import React, { useState } from 'react'
-import { results } from '../Data'
+import React, { useState } from "react";
 
 export const Questions = () => {
   const [questions] = useState([
     {
-        “Title”: “Is this right?”,
-        “Body”:  “I sure hope it is, I don’t want to have to redo all of this.”,
-        “Author”: “Edith Wilson”,
-        “Favorited_by”: [an array of users]
-        “Created_at”: “07-21-2021”,
-        “Answers”: [an array of answers]
-          
+      title: "question title",
+      author: "logan",
+      body: "this is the full question and full description of my question okay.",
+      created_at: "07-21-2021",
+      answers: ["O'Reilly"],
     },
     {
-        “Title”: “What is happening?”,
-        “Body”:  “Body body body body body hehehe.”,
-        “Author”: “Mr Someone”,
-        “Favorited_by”: [an array of users]
-        “Created_at”: “07-21-2021”,
-        “Answers”: [an array of answers]
-          
+      title: "question 2 in the list",
+      author: "greg",
+      body: "this is the full question and full description of my question okay.",
+      created_at: "07-21-2021",
+      answers: ["O'Reilly"],
     },
     {
-        “Title”: “test question”,
-        “Body”:  “me explaining my question and problems over and over.”,
-        “Author”: “Me Sara”,
-        “Favorited_by”: [an array of users]
-        “Created_at”: “07-21-2021”,
-        “Answers”: [an array of answers]
-          
+      title: "another question to see",
+      author: "sara",
+      body: "this is the full question and full description of my question okay.",
+      created_at: "07-21-2021",
+      answers: ["O'Reilly"],
     },
     {
-        “Title”: “What is this?”,
-        “Body”:  “More and more information about this problem we are having ”,
-        “Author”: “Greg”,
-        “Favorited_by”: [an array of users]
-        “Created_at”: “07-21-2021”,
-        “Answers”: [an array of answers]
-          
-    }
-])
-return (
+      title: "help me",
+      author: "mr nobody",
+      body: "this is the full question and full description of my question okay.",
+      created_at: "07-21-2021",
+      answers: ["O'Reilly"],
+    },
+  ]);
+  return (
     <div>
-        <h1>All questions</h1>
-        <div>
-            {questions.map((ask, idx) => {
-                return (
-                    console.log(ask)
-                )
-            }
-            )
-            }
-        </div>
+      <h1>All questions</h1>
+      {questions.map((ask, idx) => {
+        return (
+          <div>
+            <h3>{ask.title}</h3>
+            <p>{ask.body}</p>
+            <h4> asked by: {ask.author}</h4>
+          </div>
+        );
+      })}
     </div>
-)
+  );
+};

@@ -15,7 +15,6 @@ function App() {
       <AnswerForm />
       <Registration />
       <Questions />
-      console.log(ask)
     </div>
   );
 }
