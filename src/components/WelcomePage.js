@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 
 export const WelcomePage = () => {
   return (
@@ -8,12 +9,14 @@ export const WelcomePage = () => {
         Users can post questions they need answered. You can read questions, but
         sign up to post one of your own or answer one!
       </p>
-      <button
-        className='button is-primary'
-        //   onClick={() => (null)}
-      >
-        View all questions
-      </button>
+      <Link to="/questions">
+        <button
+          className="button is-primary"
+          //   onClick={() => (null)}
+        >
+          View all questions
+        </button>
+      </Link>
     </div>
-  )
+  );
 };

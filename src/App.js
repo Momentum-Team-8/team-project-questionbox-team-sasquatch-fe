@@ -1,25 +1,30 @@
-import "./App.css";
-import { Header } from "./components/Header";
-import { WelcomePage } from "./components/WelcomePage";
-import { QuestionForm } from "./components/QuestionForm";
-import { AnswerForm } from "./components/AnswerForm";
-import { Registration } from "./components/Registration";
-import { Questions } from "./components/Questions";
+import './App.css';
+import { Header } from './components/Header';
+import { WelcomePage } from './components/WelcomePage';
+import { QuestionForm } from './components/QuestionForm';
+import { AnswerForm } from './components/AnswerForm';
+import { Registration } from './components/Registration';
+import { Questions } from './components/Questions';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App () {
   return (
-    <div className="App">
-      <Header />
-      <WelcomePage />
-      <QuestionForm />
-      <AnswerForm />
-      <Registration />
-      <Questions />
-    </div>
-  );
+    <Router>
+      <div className='App'>
+        <Header />
+        <Switch>
+          <Route path='/' exact component={WelcomePage} />
+          <Route path='/questions' component={Questions} />
+        </Switch>
+        <QuestionForm />
+        <AnswerForm />
+        <Registration />
+      </div>
+    </Router>
+  )
 }
 
-export default App;
+export default App
 
 // title={ask.title}
 // body={ask.body}
