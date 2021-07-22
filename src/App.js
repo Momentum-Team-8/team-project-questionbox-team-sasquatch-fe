@@ -6,7 +6,7 @@ import { AnswerForm } from "./components/AnswerForm";
 import { Registration } from "./components/Registration";
 import { Questions } from "./components/Questions";
 
-function App() {
+function App () {
   return (
     <div className="App">
       <Header />
@@ -20,3 +20,8 @@ function App() {
 }
 
 export default App;
+
+// title={ask.title}
+// body={ask.body}
+// author={ask.author}
+// question={setSelectedQuestion}
