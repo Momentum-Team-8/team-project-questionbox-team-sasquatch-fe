@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { getQuestionDetail } from "../api";
 
 export const QuestionDetail = (props) => {
-  const [question, setQuestion] = useState({});
   const [loading, setLoading] = useState(true);
   const { selectedQuestion, setSelectedQuestion } = props;
 
   useEffect(() => {
-    getQuestion(selectedQuestion).then((data) => {
-      setQuestion(data);
+    getQuestionDetail(selectedQuestion).then((data) => {
+      setSelectedQuestion(data);
       setLoading(false);
+      console.log("useEffect fired");
     });
-  }, [selectedQuestion]);
+  }, []);
 
   return loading ? (
     "Questions are loading"
@@ -20,14 +21,14 @@ export const QuestionDetail = (props) => {
         Back to all Questions
       </button>
       <div>
-        <div key={idx}>
-          <h3>{ask.title}</h3>
-          <p>{ask.body}</p>
-          <h4> asked by: {ask.author}</h4>
+        <div key={selectedQuestion.id}>
+          <h3>{selectedQuestion.title}</h3>
+          <p>{selectedQuestion.body}</p>
+          <h4> asked by: {selectedQuestion.author}</h4>
         </div>
         <div>
           <ul>
-            <li>{ask.answer}</li>
+            <li>{selectedQuestion.answer}</li>
           </ul>
         </div>
       </div>
