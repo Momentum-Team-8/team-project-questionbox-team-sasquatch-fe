@@ -5,20 +5,24 @@ import { QuestionForm } from './components/QuestionForm';
 import { AnswerForm } from './components/AnswerForm';
 import { Registration } from './components/Registration';
 import { Questions } from './components/Questions';
+import { QuestionDetail } from './components/QuestionDetail';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { useState } from 'react'
 
 function App () {
+  const [selectedQuestion, setSelectedQuestion] = useState({})
   return (
     <Router>
       <div className='App'>
         <Header />
         <Switch>
-          <Route path='/' exact component={WelcomePage} />
-          <Route path='/questions' component={Questions} />
+          <Route exact path='/' component={WelcomePage} />
+          <Route path='/questions' component={() => <Questions setSelectedQuestion={setSelectedQuestion} />} />
+          <Route path='/questions/:id' component={() => <QuestionDetail selectedQuestion={selectedQuestion} />} />
         </Switch>
-        <QuestionForm />
+        {/* <QuestionForm />
         <AnswerForm />
-        <Registration />
+        <Registration /> */}
       </div>
     </Router>
   )
