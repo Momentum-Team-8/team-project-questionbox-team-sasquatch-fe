@@ -1,60 +1,61 @@
-import { useState } from 'react'
-import { requestLogin } from '../api'
-// import 'tachyons'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-export function Registration ({ isLoggedIn, setAuth }) {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [errors, setErrors] = useState()
-
-  function handleSubmit (event) {
-    event.preventDefault()
-    requestLogin(username, password)
-      .then((data) => {
-        if (data && data.auth_token) {
-          setAuth(username, data.auth_token)
-        }
-      })
-      .catch((error) => {
-        setErrors(error.message)
-      })
-  }
-
+export const Registration = () => {
   return (
-    <div className="Login">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        {errors && <div class="bg-red white pa3">{errors}</div>}
+    <div>
+      <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Text input" />
+        </div>
+      </div>
 
-        <div className="mv2">
-          <label className="db mb2" htmlFor="username">
-            Username
-          </label>
+      <div class="field">
+        <label class="label">Username</label>
+        <div class="control has-icons-left has-icons-right">
           <input
+            class="input"
             type="text"
-            id="username"
-            required
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
+            placeholder="Text input"
+            value="bulma"
           />
+          <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
         </div>
+      </div>
 
-        <div className="mv2">
-          <label className="db mb2" htmlFor="password">
-            Password
-          </label>
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control has-icons-left has-icons-right">
           <input
-            type="password"
-            id="password"
-            required
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
+            class="input"
+            type="email"
+            placeholder="Email input"
+            value=""
           />
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-exclamation-triangle"></i>
+          </span>
         </div>
-
-        <button type="submit">Log in</button>
-      </form>
+      </div>
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link">Submit</button>
+        </div>
+        <div class="control">
+          <Link to='/'>
+          <button class="button is-link is-light">Cancel</button>
+          </Link>
+        </div>
+      </div>
     </div>
-  )
-}
-
+  );
+};

@@ -1,15 +1,16 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import { AnswerForm } from "./AnswerForm";
+
 export const QuestionDetail = (props) => {
-  const { selectedQuestion, loading } = props
+  const { selectedQuestion, loading } = props;
   return (
     <>
-      {loading
-        ? 'loading'
-        : (<div>
+      {loading ? (
+        "loading"
+      ) : (
+        <div>
           <button>
-            <Link to='/questions'>
-              Back to all Questions
-            </Link>
+            <Link to="/questions">Back to all Questions</Link>
           </button>
           <div>
             <div key={selectedQuestion.id}>
@@ -23,8 +24,11 @@ export const QuestionDetail = (props) => {
               </ul>
             </div>
           </div>
-        </div>)}
+          <div>
+            <AnswerForm />
+          </div>
+        </div>
+      )}
     </>
-
-  )
-}
+  );
+};
