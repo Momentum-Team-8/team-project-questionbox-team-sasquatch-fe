@@ -1,20 +1,22 @@
-import React, { useState, useEffect } from 'react'
-// import { results } from '../Data.js';
-import { Link } from 'react-router-dom'
-import { getQuestions } from '../api.js'
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { getQuestions } from "../api.js";
 
 export const Questions = (props) => {
-  const [questions, setQuestions] = useState([])
-  const { setSelectedQuestionId } = props
+  const [questions, setQuestions] = useState([]);
+  const { setSelectedQuestionId } = props;
   useEffect(() => {
-    getQuestions().then((questions) => setQuestions(questions))
-  }, [])
+    getQuestions().then((questions) => setQuestions(questions));
+  }, []);
 
   const handleClick = (e) => {
-    setSelectedQuestionId(e.target.id)
-  }
+    setSelectedQuestionId(e.target.id);
+  };
   return (
     <div>
+      <Link to='/questions/qform'>
+        <button class="button is-primary is-light"> + Post A Question</button>
+      </Link>
       <h1>All questions</h1>
       {questions.map((ask, idx) => {
         return (
@@ -26,8 +28,8 @@ export const Questions = (props) => {
             <p>{ask.body}</p>
             <h4> asked by: {ask.author}</h4>
           </div>
-        )
+        );
       })}
     </div>
-  )
-}
+  );
+};
