@@ -24,5 +24,3 @@ export function getQuestionDetail (id) {
     .get(`https://questionbox-sasmothbe.herokuapp.com/api/questions/${id}/`)
     .then((res) => res.data)
 }
-
-

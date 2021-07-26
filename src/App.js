@@ -13,7 +13,6 @@ import { useEffect, useState } from 'react';
 
 function App () {
   const [selectedQuestionId, setSelectedQuestionId] = useState('')
-  const [selectedQuestion, setSelectedQuestion] = useState({})
   const [loading, setLoading] = useState(true)
 
   return (

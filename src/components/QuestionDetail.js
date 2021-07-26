@@ -6,14 +6,12 @@ import { getQuestionDetail } from '../api';
 export const QuestionDetail = (props) => {
   const [selectedQuestion, setSelectedQuestion] = useState({})
   const { selectedQuestionId } = props
-  const answers = selectedQuestion.answers
+  // const answers = selectedQuestion.answers
   useEffect(() => {
     getQuestionDetail(selectedQuestionId).then((data) => {
-      console.log('useEffect fired')
       setSelectedQuestion(data)
     })
   }, [selectedQuestionId])
-  console.log(selectedQuestionId)
   return (
     <>
         <div>
@@ -29,14 +27,14 @@ export const QuestionDetail = (props) => {
             </div>
           </div>
           <h1>Answers: </h1>
-          {answers.map((answers, idx) => {
+          {/* {selectedQuestion.answers.map((answers, idx) => {
             return (
               <div key={idx} class='box'>
                 <p>{answers.answer}</p>
                 <h4> answered by: {answers.user}</h4>
               </div>
             )
-          })}
+          })} */}
           <div>
             <AnswerForm />
           </div>
