@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getQuestions } from "../api.js";
 
 export const Questions = (props) => {
   const [questions, setQuestions] = useState([]);
-  const [loading, setLoading] = useState(true)
-  const { setSelectedQuestionId } = props;
+  const { setSelectedQuestionId, loading, setLoading } = props;
   useEffect(() => {
     getQuestions().then((questions) => setQuestions(questions));
     setLoading(false)

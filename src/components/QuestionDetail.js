@@ -6,6 +6,7 @@ import { getQuestionDetail } from '../api';
 export const QuestionDetail = (props) => {
   const [selectedQuestion, setSelectedQuestion] = useState({})
   const { selectedQuestionId } = props
+  const answers = selectedQuestion.answers
   useEffect(() => {
     getQuestionDetail(selectedQuestionId).then((data) => {
       console.log('useEffect fired')
@@ -28,7 +29,7 @@ export const QuestionDetail = (props) => {
             </div>
           </div>
           <h1>Answers: </h1>
-          {selectedQuestion.answers.map((answers, idx) => {
+          {answers.map((answers, idx) => {
             return (
               <div key={idx} class='box'>
                 <p>{answers.answer}</p>

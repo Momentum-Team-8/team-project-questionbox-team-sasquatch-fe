@@ -26,7 +26,7 @@ function App () {
             exact
             path='/questions'
             component={() => (
-              <Questions setSelectedQuestionId={setSelectedQuestionId} />
+              <Questions loading={loading} setLoading={setLoading} setSelectedQuestionId={setSelectedQuestionId} />
             )}
           />
           <Route exact path='/questions/qform' component={QuestionForm} />
