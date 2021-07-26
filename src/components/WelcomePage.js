@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const WelcomePage = () => {
   return (
-    <div>
+    <div class="box">
       <h1>Welcome to Question Box</h1>
       <p>
         Users can post questions they need answered. You can read questions, but

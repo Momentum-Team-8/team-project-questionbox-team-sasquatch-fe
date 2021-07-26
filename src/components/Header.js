@@ -8,7 +8,14 @@ export const Header = () => {
         <div class="navbar-start">
           <h1 class="navbar-item">Question Box</h1>
           <Link to="/">
-            <a class="navbar-item">Home</a>
+            <a class="navbar-item">
+              <i class="fas fa-home"></i> Home
+            </a>
+          </Link>
+          <Link to="/profile">
+            <a class="navbar-item">
+              <i class="far fa-user"></i> Profile
+            </a>
           </Link>
         </div>
         <div class="navbar-end">

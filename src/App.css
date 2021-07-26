@@ -1,5 +1,8 @@
 .App {
   text-align: center;
 }
+.block:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
 
 

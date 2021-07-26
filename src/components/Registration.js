@@ -7,7 +7,7 @@ export const Registration = () => {
       <div class="field">
         <label class="label">Name</label>
         <div class="control">
-          <input class="input" type="text" placeholder="Text input" />
+          <input class="input" type="text" placeholder="Name input" />
         </div>
       </div>
 
@@ -17,8 +17,8 @@ export const Registration = () => {
           <input
             class="input"
             type="text"
-            placeholder="Text input"
-            value="bulma"
+            placeholder="Username input"
+            value=""
           />
           <span class="icon is-small is-left">
             <i class="fas fa-user"></i>
