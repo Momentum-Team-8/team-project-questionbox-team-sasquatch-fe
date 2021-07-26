@@ -12,7 +12,6 @@ export const WelcomePage = () => {
       <Link to="/questions">
         <button
           className="button is-primary"
-          //   onClick={() => (null)}
         >
           View all questions
         </button>

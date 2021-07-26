@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { getQuestions } from "../api.js";
 
 export const Questions = (props) => {
@@ -10,6 +10,7 @@ export const Questions = (props) => {
   }, []);
 
   const handleClick = (e) => {
+    console.log(e.target.id)
     setSelectedQuestionId(e.target.id);
   };
   return (
@@ -21,12 +22,11 @@ export const Questions = (props) => {
       {questions.map((ask, idx) => {
         return (
           <div key={idx} class="box">
-            {/* <button className='button is-info is-rounded' onClick={() => setSelectedQuestion(ask)}>{ask.title}</button> */}
-            <Link to={`/questions/${ask.id}`} onClick={handleClick}>
+            <Link to={`/questions/${ask.id}`} onClick={(e) => handleClick(e)}>
               <h3 id={ask.id}>{ask.title}</h3>
             </Link>
             <p>{ask.body}</p>
-            <h4> asked by: {ask.author}</h4>
+            <h4> asked by: {ask.user}</h4>
           </div>
         );
       })}
