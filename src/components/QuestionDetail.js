@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom';
 import { AnswerForm } from './AnswerForm';
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { getQuestionDetail } from '../api';
 
 export const QuestionDetail = (props) => {
-  const { selectedQuestion, loading } = props
-  const [ selectedQuestion, setSelectedQuestion ] = useEffect
+  const [selectedQuestion, setSelectedQuestion] = useState({})
+  const { selectedQuestionId } = props
   useEffect(() => {
     getQuestionDetail(selectedQuestionId).then((data) => {
       console.log('useEffect fired')
       setSelectedQuestion(data)
-      setLoading(false)
+      // setLoading(false)
     })
   }, [selectedQuestionId])
   console.log(selectedQuestionId)
