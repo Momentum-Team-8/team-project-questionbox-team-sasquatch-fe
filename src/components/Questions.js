@@ -4,16 +4,21 @@ import { getQuestions } from "../api.js";
 
 export const Questions = (props) => {
   const [questions, setQuestions] = useState([]);
+  const [loading, setLoading] = useState(true)
   const { setSelectedQuestionId } = props;
   useEffect(() => {
     getQuestions().then((questions) => setQuestions(questions));
+    setLoading(false)
   }, []);
 
   const handleClick = (e) => {
     console.log(e.target.id)
     setSelectedQuestionId(e.target.id);
   };
-  return (
+
+  return loading
+    ? 'Questions are loading'
+    : (
     <div>
       <Link to='/questions/qform'>
         <button class="button is-primary is-light"> + Post A Question</button>

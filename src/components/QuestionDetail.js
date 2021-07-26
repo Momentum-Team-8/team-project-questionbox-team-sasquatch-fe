@@ -10,7 +10,6 @@ export const QuestionDetail = (props) => {
     getQuestionDetail(selectedQuestionId).then((data) => {
       console.log('useEffect fired')
       setSelectedQuestion(data)
-      // setLoading(false)
     })
   }, [selectedQuestionId])
   console.log(selectedQuestionId)
