@@ -13,7 +13,6 @@ import { useEffect, useState } from 'react';
 
 function App () {
   const [selectedQuestionId, setSelectedQuestionId] = useState('')
-  const [selectedQuestion, setSelectedQuestion] = useState({})
   const [loading, setLoading] = useState(true)
 
   return (
@@ -26,7 +25,7 @@ function App () {
             exact
             path='/questions'
             component={() => (
-              <Questions setSelectedQuestionId={setSelectedQuestionId} />
+              <Questions loading={loading} setLoading={setLoading} setSelectedQuestionId={setSelectedQuestionId} />
             )}
           />
           <Route exact path='/questions/qform' component={QuestionForm} />
