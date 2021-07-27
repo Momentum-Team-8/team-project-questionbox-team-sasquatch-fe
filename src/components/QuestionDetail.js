@@ -6,14 +6,13 @@ import { getQuestionDetail } from '../api';
 export const QuestionDetail = (props) => {
   const [selectedQuestion, setSelectedQuestion] = useState({})
   const { selectedQuestionId } = props
-  // const answers = selectedQuestion.answers
   // const [answers, setAnswers] = useLocalStorageState('answers', []);
   useEffect(() => {
     getQuestionDetail(selectedQuestionId).then((data) => {
       setSelectedQuestion(data)
     })
-  }, [selectedQuestionId])
-  console.log(selectedQuestion.answers[0].answer)
+  }, [])
+  console.log(selectedQuestion)
   return (
     <>
         <div>
@@ -29,8 +28,8 @@ export const QuestionDetail = (props) => {
             </div>
           </div>
           <h1>Answers: </h1>
-          {/* {selectedQuestion.answers.map((answers, idx) => {
-            console.log(answers
+          {selectedQuestion.answers && selectedQuestion.answers.map((answers, idx) => {
+            console.log(answers)
             return (
               <div key={idx} class='box'>
                 <p>{answers.answer}</p>
