@@ -1,12 +1,13 @@
 import axios from "axios";
-import React from "react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+
+import { Link, useHistory } from "react-router-dom";
 
 export const QuestionForm = () => {
   const [question, setQuestion] = useState("");
   const [body, setBody] = useState("");
   const [title, setTitle] = useState("");
+  let history = useHistory();
 
   const handleChange = (event) => {
     setQuestion(event.target.value);
@@ -14,10 +15,24 @@ export const QuestionForm = () => {
 
   const handleSubmit = (event) => {
     alert("Your question has been submitted!");
-    axios.post("https://questionbox-sasmothbe.herokuapp.com/api/questions", {
-      title: title,
-      body: body,
-    });
+    axios
+      .post(
+        "https://questionbox-sasmothbe.herokuapp.com/api/questions/create/",
+        {
+          title: title,
+          body: body,
+        },
+        {
+          headers: {
+            Authorization: "Token fe4ba9290bbdc508c1bd0369584bc981dbca214e",
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response)
+        history.push("/questions");
+      });
     event.preventDefault();
     setBody("");
     setTitle("");
@@ -33,13 +48,17 @@ export const QuestionForm = () => {
             placeholder="Title input"
             type="text"
             value={title}
-            onChange={handleChange}
+            onChange={(event) => setTitle(event.target.value)}
           />
         </label>
         <div class="field">
           <label class="label">Type Question Body: </label>
           <div class="control">
-            <textarea class="textarea" placeholder="Type here..."></textarea>
+            <textarea
+              class="textarea"
+              placeholder="Type here..."
+              onChange={(event) => setBody(event.target.value)}
+            />
             <p>{body}</p>
           </div>
           <div class="field is-grouped">
