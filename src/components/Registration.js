@@ -8,23 +8,23 @@ export const Registration = () => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   let history = useHistory()
-  
+
   const handleSubmit = (event) => {
+    event.preventDefault()
     axios
       .post(
-        "https://questionbox-sasmothbe.herokuapp.com/api/accounts/signup/",
+        "https://questionbox-sasmothbe.herokuapp.com/api/accounts/signup",
         {
           name: name,
           email: email,
           password: password,
-          confirmPassword: password
+          password2: confirmPassword
         },
       )
       .then((response) => {
         console.log(response)
         history.push("/questions");
       });
-    event.preventDefault()
   }
   return (
     <div>
