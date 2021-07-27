@@ -14,7 +14,6 @@ import { useLocalStorageState } from 'use-local-storage-state'
 
 function App () {
   const [selectedQuestionId, setSelectedQuestionId] = useState('')
-  const [loading, setLoading] = useState(true)
   // Lines 19-27, 55 added for login purposes
   const [username, setUsername] = useLocalStorageState('myAppUsername', '')
   const [token, setToken] = useLocalStorageState('myAppToken', '')
@@ -36,7 +35,7 @@ function App () {
             exact
             path='/questions'
             component={() => (
-              <Questions loading={loading} setLoading={setLoading} setSelectedQuestionId={setSelectedQuestionId} />
+              <Questions setSelectedQuestionId={setSelectedQuestionId} />
             )}
           />
           <Route exact path='/questions/qform' component={QuestionForm} />
@@ -45,7 +44,6 @@ function App () {
             component={() => (
               <QuestionDetail
                 selectedQuestionId={selectedQuestionId}
-                loading={loading}
               />
             )}
           />
