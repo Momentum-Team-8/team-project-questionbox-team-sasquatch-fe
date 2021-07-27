@@ -7,6 +7,7 @@ export const QuestionDetail = (props) => {
   const [selectedQuestion, setSelectedQuestion] = useState({})
   const { selectedQuestionId } = props
   // const answers = selectedQuestion.answers
+  // const [answers, setAnswers] = useLocalStorageState('answers', []);
   useEffect(() => {
     getQuestionDetail(selectedQuestionId).then((data) => {
       setSelectedQuestion(data)
@@ -29,14 +30,14 @@ export const QuestionDetail = (props) => {
           </div>
           <h1>Answers: </h1>
           {/* {selectedQuestion.answers.map((answers, idx) => {
-            console.log(answers)
+            console.log(answers
             return (
               <div key={idx} class='box'>
                 <p>{answers.answer}</p>
                 <h4> answered by: {answers.user}</h4>
               </div>
             )
-          })} */}
+          })}
           <div>
             <AnswerForm />
           </div>
