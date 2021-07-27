@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 export const Registration = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
+  }
   return (
     <div>
+      <form className='form' onSubmit={handleSubmit}>
       <div class="field">
         <label class="label">Name</label>
         <div class="control">
@@ -48,7 +52,7 @@ export const Registration = () => {
       </div>
       <div class="field is-grouped">
         <div class="control">
-          <button class="button is-link">Submit</button>
+          <button class="button is-link" type='submit'>Submit</button>
         </div>
         <div class="control">
           <Link to='/'>
@@ -56,6 +60,7 @@ export const Registration = () => {
           </Link>
         </div>
       </div>
+      </form>
     </div>
   );
 };
