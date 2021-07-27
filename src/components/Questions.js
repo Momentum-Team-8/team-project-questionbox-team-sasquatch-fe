@@ -11,7 +11,7 @@ export const Questions = (props) => {
       setQuestions(questions)
       setLoading(false)
     })
-  }, [setLoading]);
+  }, []);
 
   const handleClick = (e) => {
     console.log(e.target.id)
