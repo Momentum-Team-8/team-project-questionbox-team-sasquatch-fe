@@ -4,10 +4,13 @@ import { getQuestions } from "../api.js";
 
 export const Questions = (props) => {
   const [questions, setQuestions] = useState([]);
-  const { setSelectedQuestionId, loading, setLoading } = props;
+  const [loading, setLoading] = useState(true)
+  const { setSelectedQuestionId } = props;
   useEffect(() => {
-    getQuestions().then((questions) => setQuestions(questions));
-    setLoading(false)
+    getQuestions().then((questions) => {
+      setQuestions(questions)
+      setLoading(false)
+    })
   }, []);
 
   const handleClick = (e) => {
@@ -16,7 +19,7 @@ export const Questions = (props) => {
   };
 
   return loading
-    ? 'Questions are loading'
+    ? 'Questions are loading...'
     : (
     <div>
       <Link to='/questions/qform'>

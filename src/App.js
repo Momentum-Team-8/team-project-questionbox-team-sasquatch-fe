@@ -9,11 +9,21 @@ import { Questions } from './components/Questions';
 import { QuestionDetail } from './components/QuestionDetail';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useLocalStorageState } from 'use-local-storage-state'
 
 
 function App () {
   const [selectedQuestionId, setSelectedQuestionId] = useState('')
-  const [loading, setLoading] = useState(true)
+  // Lines 19-27, 55 added for login purposes
+  const [username, setUsername] = useLocalStorageState('myAppUsername', '')
+  const [token, setToken] = useLocalStorageState('myAppToken', '')
+
+  function setAuth (username, token) {
+    setUsername(username)
+    setToken(token)
+  }
+
+  const isLoggedIn = username && token
 
   return (
     <Router>
@@ -25,7 +35,7 @@ function App () {
             exact
             path='/questions'
             component={() => (
-              <Questions loading={loading} setLoading={setLoading} setSelectedQuestionId={setSelectedQuestionId} />
+              <Questions setSelectedQuestionId={setSelectedQuestionId} />
             )}
           />
           <Route exact path='/questions/qform' component={QuestionForm} />
@@ -34,12 +44,15 @@ function App () {
             component={() => (
               <QuestionDetail
                 selectedQuestionId={selectedQuestionId}
-                loading={loading}
               />
             )}
           />
           <Route exact path='/registration' component={Registration} />
-          <Route exact path='/login' component={Login} />
+          <Route
+            exact path='/login' component={() => (
+              <Login setAuth={setAuth} isLoggedIn={isLoggedIn} />
+            )}
+          />
           <Route exact path='/profile' component={Profile} />
         </Switch>
       </div>
