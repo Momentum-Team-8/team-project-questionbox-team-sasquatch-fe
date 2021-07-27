@@ -12,6 +12,7 @@ export const QuestionDetail = (props) => {
       setSelectedQuestion(data)
     })
   }, [selectedQuestionId])
+  console.log(selectedQuestion.answers[0].answer)
   return (
     <>
         <div>
@@ -28,6 +29,7 @@ export const QuestionDetail = (props) => {
           </div>
           <h1>Answers: </h1>
           {/* {selectedQuestion.answers.map((answers, idx) => {
+            console.log(answers)
             return (
               <div key={idx} class='box'>
                 <p>{answers.answer}</p>
