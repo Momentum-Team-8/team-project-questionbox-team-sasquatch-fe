@@ -1,7 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { requestLogout } from '../api';
 
-export const Header = () => {
+export const Header = (props) => {
+  const { token, setToken } = props
+  let history = useHistory()
+  const handleLogout = () => {
+    requestLogout(token)
+    setToken('')
+    history.push('/login')
+  }
   return (
     <div className='container'>
       <div className='App' class='notification is-black'>
@@ -38,9 +46,14 @@ export const Header = () => {
                   <strong>Sign up</strong>
                 </a>
               </Link>
-              <Link to='/login'>
+              { token ? (
+              <button class='button is-primary' onClick={handleLogout}>Logout</button>
+              )
+              : (<Link to='/login'>
               <a class='button is-primary'>Log in</a>
-              </Link>
+              </Link>)
+            }
+
             </div>
           </div>
         </div>

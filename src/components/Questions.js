@@ -2,16 +2,17 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getQuestions } from "../api.js";
 
-export const Questions = (props) => {
+export const Questions = () => {
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true)
-  const { handleLogout } = props
   useEffect(() => {
     getQuestions().then((questions) => {
       setQuestions(questions)
       setLoading(false)
     })
   }, []);
+
+
 
   return loading
     ? 'Questions are loading...'
@@ -20,9 +21,6 @@ export const Questions = (props) => {
       <Link to='/questions/qform'>
         <button class="button is-primary is-light"> + Post A Question</button>
       </Link>
-      <div class='control'>
-        <button class='button is-primary' onClick={() => handleLogout}>Logout</button>
-      </div>
       <h1>All questions</h1>
       {questions.map((ask, idx) => {
         return (

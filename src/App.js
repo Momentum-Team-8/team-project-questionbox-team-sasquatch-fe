@@ -10,14 +10,12 @@ import { QuestionDetail } from "./components/QuestionDetail";
 import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useLocalStorageState } from "use-local-storage-state";
-import { requestLogout } from "./api";
 
 function App () {
   // Lines 19-27, 55 added for login purposes
   const [email, setEmail] = useLocalStorageState('email', '');
   const [password, setPassword] = useLocalStorageState('password', '')
   const [token, setToken] = useLocalStorageState('token', '');
-  const history = useHistory()
 
   function setAuth (email, password, token) {
     setEmail(email);
@@ -25,24 +23,19 @@ function App () {
     setToken(token);
   }
 
-  const handleLogout = () => {
-    requestLogout()
-    history.push('/login')
-  }
-
   const isLoggedIn = email && password && token;
 
   return (
     <Router>
       <div className="App">
-        <Header />
+        <Header token={token} setToken={setToken} />
         <Switch>
           <Route exact path="/" component={WelcomePage} />
           <Route
             exact
             path="/questions"
             component={() => (
-              <Questions handleLogout={handleLogout} />
+              <Questions />
             )}
           />
           <Route exact path="/questions/qform" component={QuestionForm} token={token} isLoggedIn={isLoggedIn}/>
