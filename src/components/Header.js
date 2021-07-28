@@ -16,12 +16,12 @@ export const Header = (props) => {
         <div class='navbar-start'>
           <h1 class='navbar-item has-text-white'>Question Box</h1>
           <Link to='/'>
-            <a href='' class='navbar-item'>
+            <a href='#' class='navbar-item'>
               <i class='fas fa-home' /> Home
             </a>
           </Link>
           <Link to='/profile'>
-            <a href='' class='navbar-item'>
+            <a href='#' class='navbar-item'>
               <i class='far fa-user' /> Profile
             </a>
           </Link>
@@ -38,13 +38,13 @@ export const Header = (props) => {
                   />
                 </div>
                 <div class='control'>
-                  <a href='' class='button is-primary'>
+                  <a href='#' class='button is-primary'>
                     Search
                   </a>
                 </div>
               </div>
               <Link to='/registration'>
-                <a class='button is-light'>
+                <a href='#' class='button is-light'>
                   <strong>Sign up</strong>
                 </a>
               </Link>
@@ -54,7 +54,7 @@ export const Header = (props) => {
                 </button>
               ) : (
                 <Link to='/login'>
-                  <a href='' class='button is-primary'>
+                  <a href='#' class='button is-primary'>
                     Log in
                   </a>
                 </Link>

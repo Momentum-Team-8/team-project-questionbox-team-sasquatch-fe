@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 export const QuestionForm = ({ token }) => {
-  const [setQuestion] = useState("");
+  // const [setQuestion] = useState("");
   const [body, setBody] = useState("");
   const [title, setTitle] = useState("");
   let history = useHistory();
