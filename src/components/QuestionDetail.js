@@ -11,7 +11,7 @@ export const QuestionDetail = (props) => {
     getQuestionDetail(selectedQuestionId).then((data) => {
       setSelectedQuestion(data)
     })
-  }, [])
+  }, [selectedQuestionId])
   console.log(selectedQuestion)
   return (
     <>
@@ -29,7 +29,6 @@ export const QuestionDetail = (props) => {
           </div>
           <h1>Answers: </h1>
           {selectedQuestion.answers && selectedQuestion.answers.map((answers, idx) => {
-            console.log(answers)
             return (
               <div key={idx} class='box'>
                 <p>{answers.answer}</p>
