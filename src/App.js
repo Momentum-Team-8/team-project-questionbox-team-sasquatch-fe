@@ -10,6 +10,7 @@ import { QuestionDetail } from "./components/QuestionDetail";
 import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useLocalStorageState } from "use-local-storage-state";
+import { requestLogout } from "./api";
 
 function App () {
   // Lines 19-27, 55 added for login purposes
@@ -25,9 +26,7 @@ function App () {
   }
 
   const handleLogout = () => {
-    setEmail('')
-    setPassword('')
-    setToken('')
+    requestLogout()
     history.push('/login')
   }
 
@@ -43,17 +42,17 @@ function App () {
             exact
             path="/questions"
             component={() => (
-              <Questions />
+              <Questions handleLogout={handleLogout} />
             )}
           />
-          <Route exact path="/questions/qform" component={QuestionForm} token={token} />
+          <Route exact path="/questions/qform" component={QuestionForm} token={token} isLoggedIn={isLoggedIn}/>
           <Route
             exact
             path="/questions/:id"
             component={() => (
-              <QuestionDetail token={token}/>
+              <QuestionDetail token={token} isLoggedIn={isLoggedIn}/>
             )}
-          />
+          /> 
           <Route exact path="/registration" component={Registration} />
           <Route
             exact
@@ -62,7 +61,7 @@ function App () {
               <Login setAuth={setAuth} isLoggedIn={isLoggedIn} token={token} />
             )}
           />
-          <Route exact path="/profile" component={Profile} token={token} />
+          <Route exact path="/profile" component={Profile} token={token} isLoggedIn={isLoggedIn} />
         </Switch>
       </div>
     </Router>

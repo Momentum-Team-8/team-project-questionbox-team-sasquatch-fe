@@ -7,6 +7,19 @@ export function requestLogin (email, password) {
       password: password
     })
 }
+
+export function requestLogout (token) {
+  return axios
+    .post('https://questionbox-sasmothbe.herokuapp.com/auth/token/logout',
+      {
+        headers: {
+          Authorization: `Token ${token}`, 
+          'Content-Type': 'application/json'
+        }
+      })
+    .then((response) => response)
+}
+
 function fakeResponse (username, password) {
   return new Promise((resolve, reject) => {
     if (username && password) {

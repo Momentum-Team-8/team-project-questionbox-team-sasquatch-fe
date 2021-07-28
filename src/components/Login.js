@@ -13,7 +13,7 @@ export const Login = ({ isLoggedIn, setAuth }) => {
     requestLogin(email, password)
       .then((data) => {
         if (data && data.data.auth_token) {
-          setAuth(email, data.data.auth_token)
+          setAuth(email, password, data.data.auth_token)
           history.push('/')
         }
       })
