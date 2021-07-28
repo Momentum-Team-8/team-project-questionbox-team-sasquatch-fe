@@ -3,15 +3,14 @@ import { AnswerForm } from './AnswerForm';
 import { useEffect, useState } from 'react'
 import { getQuestionDetail } from '../api';
 
-export const QuestionDetail = () => {
+export const QuestionDetail = ({ token }) => {
   const { id } = useParams()
   const [selectedQuestion, setSelectedQuestion] = useState({})
   // const [answers, setAnswers] = useLocalStorageState('answers', []);
   useEffect(() => {
     getQuestionDetail(id).then((data) => {
       setSelectedQuestion(data)
-    })
-  }, [selectedQuestion])
+    }), [selectedQuestion])
   return (
     <>
         <div>

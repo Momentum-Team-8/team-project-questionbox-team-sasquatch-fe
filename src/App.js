@@ -7,26 +7,28 @@ import { Registration } from "./components/Registration";
 import { Login } from "./components/Login";
 import { Questions } from "./components/Questions";
 import { QuestionDetail } from "./components/QuestionDetail";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useLocalStorageState } from "use-local-storage-state";
 
-function App() {
+function App () {
   // Lines 19-27, 55 added for login purposes
-  const [username, setUsername] = useLocalStorageState("myAppUsername", "");
-  const [token, setToken] = useLocalStorageState("myAppToken", "");
+  const [email, setEmail] = useLocalStorageState('email', '');
+  const [password, setPassword] = useLocalStorageState('password', '')
+  const [token, setToken] = useLocalStorageState('token', '');
 
-  function setAuth(username, token) {
-    setUsername(username);
+  function setAuth (email, password, token) {
+    setEmail(email);
+    setPassword(password)
     setToken(token);
   }
 
-  const isLoggedIn = username && token;
+  const isLoggedIn = email && password && token;
 
   return (
     <Router>
       <div className="App">
-        <Header />
+        <Header token={token} setToken={setToken} />
         <Switch>
           <Route exact path="/" component={WelcomePage} />
           <Route
@@ -36,23 +38,23 @@ function App() {
               <Questions />
             )}
           />
-          <Route exact path="/questions/qform" component={QuestionForm} />
+          <Route exact path="/questions/qform" component={QuestionForm} token={token} isLoggedIn={isLoggedIn}/>
           <Route
             exact
             path="/questions/:id"
             component={() => (
-              <QuestionDetail />
+              <QuestionDetail token={token} isLoggedIn={isLoggedIn}/>
             )}
-          />
+          /> 
           <Route exact path="/registration" component={Registration} />
           <Route
             exact
             path="/login"
             component={() => (
-              <Login setAuth={setAuth} isLoggedIn={isLoggedIn} />
+              <Login setAuth={setAuth} isLoggedIn={isLoggedIn} token={token} />
             )}
           />
-          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/profile" component={Profile} token={token} isLoggedIn={isLoggedIn} />
         </Switch>
       </div>
     </Router>

@@ -1,17 +1,20 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { requestLogin } from '../api';
 
-export function Login ({ isLoggedIn, setAuth }) {
-  const [username, setUsername] = useState('')
+export const Login = ({ isLoggedIn, setAuth }) => {
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState()
+  const history = useHistory()
 
   function handleSubmit (event) {
     event.preventDefault()
-    requestLogin(username, password)
+    requestLogin(email, password)
       .then((data) => {
-        if (data && data.auth_token) {
-          setAuth(username, data.auth_token)
+        if (data && data.data.auth_token) {
+          setAuth(email, password, data.data.auth_token)
+          history.push('/')
         }
       })
       .catch((error) => {
@@ -27,14 +30,14 @@ export function Login ({ isLoggedIn, setAuth }) {
 
         <div className='mv2'>
           <label className='db mb2' htmlFor='username'>
-            Username
+            Email
           </label>
           <input
             type='text'
             id='username'
             required
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
           />
         </div>
 
