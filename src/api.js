@@ -20,14 +20,14 @@ export function requestLogout (token) {
     .then((response) => response)
 }
 
-function fakeResponse (username, password) {
-  return new Promise((resolve, reject) => {
-    if (username && password) {
-      resolve({ auth_token: 'faketoken12345678' })
-    }
-    reject(new Error('Authentication failed!'))
-  })
-}
+// function fakeResponse (username, password) {
+//   return new Promise((resolve, reject) => {
+//     if (username && password) {
+//       resolve({ auth_token: 'faketoken12345678' })
+//     }
+//     reject(new Error('Authentication failed!'))
+//   })
+// }
 
 export function getQuestions () {
   return axios

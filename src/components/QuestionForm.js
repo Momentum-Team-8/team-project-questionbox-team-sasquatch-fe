@@ -4,14 +4,14 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 export const QuestionForm = ({ token }) => {
-  const [question, setQuestion] = useState("");
+  // const [setQuestion] = useState("");
   const [body, setBody] = useState("");
   const [title, setTitle] = useState("");
   let history = useHistory();
 
-  const handleChange = (event) => {
-    setQuestion(event.target.value);
-  };
+  // const handleChange = (event) => {
+  //   setQuestion(event.target.value);
+  // };
 
   const handleSubmit = (event) => {
     alert("Your question has been submitted!");
