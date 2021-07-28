@@ -46,12 +46,12 @@ function App () {
               <Questions />
             )}
           />
-          <Route exact path="/questions/qform" component={QuestionForm} />
+          <Route exact path="/questions/qform" component={QuestionForm} token={token} />
           <Route
             exact
             path="/questions/:id"
             component={() => (
-              <QuestionDetail />
+              <QuestionDetail token={token}/>
             )}
           />
           <Route exact path="/registration" component={Registration} />
@@ -59,10 +59,10 @@ function App () {
             exact
             path="/login"
             component={() => (
-              <Login setAuth={setAuth} isLoggedIn={isLoggedIn} />
+              <Login setAuth={setAuth} isLoggedIn={isLoggedIn} token={token} />
             )}
           />
-          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/profile" component={Profile} token={token} />
         </Switch>
       </div>
     </Router>

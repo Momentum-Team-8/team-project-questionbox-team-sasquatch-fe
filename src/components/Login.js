@@ -1,17 +1,20 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { requestLogin } from '../api';
 
-export function Login ({ isLoggedIn, setAuth }) {
+export const Login = ({ isLoggedIn, setAuth }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState()
+  const history = useHistory()
 
   function handleSubmit (event) {
     event.preventDefault()
     requestLogin(email, password)
       .then((data) => {
-        if (data && data.auth_token) {
-          setAuth(data, data.auth_token)
+        if (data && data.data.auth_token) {
+          setAuth(email, data.data.auth_token)
+          history.push('/')
         }
       })
       .catch((error) => {

@@ -1,8 +1,11 @@
 import axios from 'axios';
 
-export function requestLogin (username, password) {
-  // a real login request would go here but in the meantime, we'll fake it
-  return fakeResponse(username, password)
+export function requestLogin (email, password) {
+  return axios
+    .post('https://questionbox-sasmothbe.herokuapp.com/auth/token/login', {
+      email: email,
+      password: password
+    })
 }
 function fakeResponse (username, password) {
   return new Promise((resolve, reject) => {

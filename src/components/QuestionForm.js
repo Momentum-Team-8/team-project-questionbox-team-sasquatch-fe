@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 import { Link, useHistory } from "react-router-dom";
 
-export const QuestionForm = () => {
+export const QuestionForm = ({ token }) => {
   const [question, setQuestion] = useState("");
   const [body, setBody] = useState("");
   const [title, setTitle] = useState("");
