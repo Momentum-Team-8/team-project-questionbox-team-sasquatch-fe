@@ -11,7 +11,7 @@ export const QuestionDetail = (props) => {
     getQuestionDetail(selectedQuestionId).then((data) => {
       setSelectedQuestion(data)
     })
-  }, [])
+  }, [setSelectedQuestion])
   console.log(selectedQuestion)
   return (
     <>
