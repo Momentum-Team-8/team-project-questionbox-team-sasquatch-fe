@@ -7,21 +7,31 @@ import { Registration } from "./components/Registration";
 import { Login } from "./components/Login";
 import { Questions } from "./components/Questions";
 import { QuestionDetail } from "./components/QuestionDetail";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useLocalStorageState } from "use-local-storage-state";
 
-function App() {
+function App () {
   // Lines 19-27, 55 added for login purposes
-  const [username, setUsername] = useLocalStorageState("myAppUsername", "");
-  const [token, setToken] = useLocalStorageState("myAppToken", "");
+  const [email, setEmail] = useLocalStorageState('email', '');
+  const [password, setPassword] = useLocalStorageState('password', '')
+  const [token, setToken] = useLocalStorageState('token', '');
+  const history = useHistory()
 
-  function setAuth(username, token) {
-    setUsername(username);
+  function setAuth (email, password, token) {
+    setEmail(email);
+    setPassword(password)
     setToken(token);
   }
 
-  const isLoggedIn = username && token;
+  const handleLogout = () => {
+    setEmail('')
+    setPassword('')
+    setToken('')
+    history.push('/login')
+  }
+
+  const isLoggedIn = email && password && token;
 
   return (
     <Router>

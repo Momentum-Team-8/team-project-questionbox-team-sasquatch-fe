@@ -7,7 +7,7 @@ export const Registration = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-  let history = useHistory()
+  const history = useHistory()
 
   const handleSubmit = (event) => {
     event.preventDefault()

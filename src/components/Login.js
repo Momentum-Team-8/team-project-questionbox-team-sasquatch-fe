@@ -2,16 +2,16 @@ import { useState } from 'react';
 import { requestLogin } from '../api';
 
 export function Login ({ isLoggedIn, setAuth }) {
-  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState()
 
   function handleSubmit (event) {
     event.preventDefault()
-    requestLogin(username, password)
+    requestLogin(email, password)
       .then((data) => {
         if (data && data.auth_token) {
-          setAuth(username, data.auth_token)
+          setAuth(data, data.auth_token)
         }
       })
       .catch((error) => {
@@ -27,14 +27,14 @@ export function Login ({ isLoggedIn, setAuth }) {
 
         <div className='mv2'>
           <label className='db mb2' htmlFor='username'>
-            Username
+            Email
           </label>
           <input
             type='text'
             id='username'
             required
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
           />
         </div>
 
