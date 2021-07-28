@@ -1,18 +1,17 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { AnswerForm } from './AnswerForm';
 import { useEffect, useState } from 'react'
 import { getQuestionDetail } from '../api';
 
-export const QuestionDetail = (props) => {
+export const QuestionDetail = () => {
+  const { id } = useParams()
   const [selectedQuestion, setSelectedQuestion] = useState({})
-  const { selectedQuestionId } = props
   // const [answers, setAnswers] = useLocalStorageState('answers', []);
   useEffect(() => {
-    getQuestionDetail(selectedQuestionId).then((data) => {
+    getQuestionDetail(id).then((data) => {
       setSelectedQuestion(data)
     })
-  }, [selectedQuestion])
-  console.log(selectedQuestion)
+  }, [])
   return (
     <>
         <div>

@@ -12,7 +12,6 @@ import { useEffect, useState } from "react";
 import { useLocalStorageState } from "use-local-storage-state";
 
 function App() {
-  const [selectedQuestionId, setSelectedQuestionId] = useState("");
   // Lines 19-27, 55 added for login purposes
   const [username, setUsername] = useLocalStorageState("myAppUsername", "");
   const [token, setToken] = useLocalStorageState("myAppToken", "");
@@ -34,7 +33,7 @@ function App() {
             exact
             path="/questions"
             component={() => (
-              <Questions setSelectedQuestionId={setSelectedQuestionId} />
+              <Questions />
             )}
           />
           <Route exact path="/questions/qform" component={QuestionForm} />
@@ -42,7 +41,7 @@ function App() {
             exact
             path="/questions/:id"
             component={() => (
-              <QuestionDetail selectedQuestionId={selectedQuestionId} />
+              <QuestionDetail />
             )}
           />
           <Route exact path="/registration" component={Registration} />
