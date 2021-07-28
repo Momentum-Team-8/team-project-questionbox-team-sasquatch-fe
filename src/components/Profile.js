@@ -11,6 +11,7 @@ export const Profile = () => {
             <img
               class="is-rounded is-centered"
               src="https://bulma.io/images/placeholders/128x128.png"
+              alt="profile image of user"
             />
           </figure>
           <p>

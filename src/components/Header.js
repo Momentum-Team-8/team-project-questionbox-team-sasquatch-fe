@@ -9,19 +9,19 @@ export const Header = (props) => {
     requestLogout(token)
     setToken('')
     history.push('/login')
-  }
+  };
   return (
     <div className='container'>
       <div className='App' class='notification is-black'>
         <div class='navbar-start'>
           <h1 class='navbar-item has-text-white'>Question Box</h1>
           <Link to='/'>
-            <a class='navbar-item'>
+            <a href='' class='navbar-item'>
               <i class='fas fa-home' /> Home
             </a>
           </Link>
           <Link to='/profile'>
-            <a class='navbar-item'>
+            <a href='' class='navbar-item'>
               <i class='far fa-user' /> Profile
             </a>
           </Link>
@@ -29,7 +29,7 @@ export const Header = (props) => {
         <div class='navbar-end'>
           <div class='navbar-item'>
             <div class='field has-addons'>
-              <div class='buttons' class='field is-grouped'>
+              <div class='buttons' className='field is-grouped'>
                 <div class='control'>
                   <input
                     class='input'
@@ -38,7 +38,9 @@ export const Header = (props) => {
                   />
                 </div>
                 <div class='control'>
-                  <a class='button is-primary'>Search</a>
+                  <a href='' class='button is-primary'>
+                    Search
+                  </a>
                 </div>
               </div>
               <Link to='/registration'>
@@ -46,14 +48,17 @@ export const Header = (props) => {
                   <strong>Sign up</strong>
                 </a>
               </Link>
-              { token ? (
-              <button class='button is-primary' onClick={handleLogout}>Logout</button>
-              )
-              : (<Link to='/login'>
-              <a class='button is-primary'>Log in</a>
-              </Link>)
-            }
-
+              {token ? (
+                <button class='button is-primary' onClick={handleLogout}>
+                  Logout
+                </button>
+              ) : (
+                <Link to='/login'>
+                  <a href='' class='button is-primary'>
+                    Log in
+                  </a>
+                </Link>
+              )}
             </div>
           </div>
         </div>

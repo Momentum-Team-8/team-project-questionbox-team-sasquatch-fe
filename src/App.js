@@ -7,8 +7,7 @@ import { Registration } from "./components/Registration";
 import { Login } from "./components/Login";
 import { Questions } from "./components/Questions";
 import { QuestionDetail } from "./components/QuestionDetail";
-import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useLocalStorageState } from "use-local-storage-state";
 
 function App () {
