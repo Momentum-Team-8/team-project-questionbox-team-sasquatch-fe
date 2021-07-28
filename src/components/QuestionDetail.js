@@ -11,7 +11,7 @@ export const QuestionDetail = () => {
     getQuestionDetail(id).then((data) => {
       setSelectedQuestion(data)
     })
-  }, [])
+  }, [selectedQuestion])
   return (
     <>
         <div>
