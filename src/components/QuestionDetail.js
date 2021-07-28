@@ -11,11 +11,7 @@ export const QuestionDetail = (props) => {
     getQuestionDetail(selectedQuestionId).then((data) => {
       setSelectedQuestion(data)
     })
-<<<<<<< HEAD
-  }, [setSelectedQuestion])
-=======
-  }, [selectedQuestionId])
->>>>>>> main
+  }, [selectedQuestion])
   console.log(selectedQuestion)
   return (
     <>
