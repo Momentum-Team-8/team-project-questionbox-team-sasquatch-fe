@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 export const AnswerForm = () => {
-  const [text, setText] = useState('')
+  const { id } = useParams();
+  const [text, setText] = useState("");
   const [answer, setAnswer] = useState("");
   let history = useHistory();
 
   const handleChange = (event) => {
-    setText(event.target.value)
+    setText(event.target.value);
   };
 
   const handleSubmit = (event) => {
@@ -17,7 +18,8 @@ export const AnswerForm = () => {
       .post(
         "https://questionbox-sasmothbe.herokuapp.com/api/answers/create/",
         {
-          answer: 'answer'
+          question: `${id}`,
+          answer: text
         },
         {
           headers: {
@@ -27,8 +29,8 @@ export const AnswerForm = () => {
         }
       )
       .then((response) => {
-        console.log(response)
-        // history.push("/questions");
+        console.log(response);
+        history.push(`/questions/${id}`);
       });
     event.preventDefault();
     setAnswer("");
@@ -45,9 +47,9 @@ export const AnswerForm = () => {
         </div>
         <div>
           <p>{answer}</p>
-          <input type='submit' value='Submit' />
+          <input type="submit" value="Submit" />
         </div>
       </form>
     </>
-  )
+  );
 };

@@ -10,8 +10,7 @@ export const QuestionDetail = ({ token }) => {
   useEffect(() => {
     getQuestionDetail(id).then((data) => {
       setSelectedQuestion(data)
-    })
-  }, [id])
+    }), [selectedQuestion])
   return (
     <>
         <div>
