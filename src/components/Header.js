@@ -43,11 +43,13 @@ export const Header = (props) => {
                   <button class='button is-primary is-light'>Search</button>
                 </div> */}
               </div>
-              <Link to='/registration'>
+              {token ? (<></>)
+              : (<Link to='/registration'>
                 <button class='button is-primary is-light'>
                   <strong>Sign up</strong>
                 </button>
               </Link>
+              )}
               {token ? (
                 <button
                   class='button is-primary is-light'
