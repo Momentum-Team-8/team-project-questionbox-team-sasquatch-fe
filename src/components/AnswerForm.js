@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
 
-export const AnswerForm = ({ token }) => {
+export const AnswerForm = ({ token}) => {
   const { id } = useParams();
   const [text, setText] = useState("");
   const [answer, setAnswer] = useState("");
@@ -37,6 +37,7 @@ export const AnswerForm = ({ token }) => {
   };
   return (
     <>
+    {token ? (
       <form onSubmit={(event) => handleSubmit(event)}>
         <h1>Would you like to contribute an answer to this question?</h1>
         <div>
@@ -50,6 +51,7 @@ export const AnswerForm = ({ token }) => {
           <input type="submit" value="Submit" />
         </div>
       </form>
+      ) : (<></>)}
     </>
   );
 };

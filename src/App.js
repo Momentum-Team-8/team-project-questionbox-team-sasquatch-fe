@@ -45,9 +45,7 @@ function App () {
               <Login isLoggedIn={isLoggedIn} token={token} setToken={setToken} />
             )}
           />
-          {isLoggedIn ? (
           <Route exact path="/profile" component={Profile} />
-          ) : (<></>)}
         </Switch>
       </div>
     </Router>
