@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { requestLogin } from '../api';
 
-export const Login = ({ isLoggedIn, setAuth }) => {
+export const Login = ({ isLoggedIn, setToken }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState()
@@ -13,7 +13,7 @@ export const Login = ({ isLoggedIn, setAuth }) => {
     requestLogin(email, password)
       .then((data) => {
         if (data && data.data.auth_token) {
-          setAuth(email, password, data.data.auth_token)
+          setToken(data.data.auth_token)
           history.push('/')
         }
       })
