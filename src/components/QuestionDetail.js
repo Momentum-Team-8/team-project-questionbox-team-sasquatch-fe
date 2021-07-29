@@ -37,7 +37,7 @@ export const QuestionDetail = ({ token }) => {
             );
           })}
         <div>
-          <AnswerForm />
+          <AnswerForm token={token} />
         </div>
       </div>
     </>
