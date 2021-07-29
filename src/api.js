@@ -57,7 +57,3 @@ export function deleteAnswer (token, id) {
     }
     )
 }
-
-export function editAnswer (token, id) {
-  
-}
