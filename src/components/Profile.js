@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Profile = () => {
+export const Profile = ({ token }) => {
   return (
     <div class="tile is-ancestor">
         <div class="tile is-parent">

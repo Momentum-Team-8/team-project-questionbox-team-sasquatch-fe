@@ -23,14 +23,14 @@ export const QuestionDetail = ({ token }) => {
             <h3>{selectedQuestion.title}</h3>
             <p>{selectedQuestion.body}</p>
             <h4> asked by: {selectedQuestion.user}</h4>
-            <p>Category: {selectedQuestion.tags}</p>
+            {/* <p>Category: {selectedQuestion.tags}</p> */}
           </div>
         </div>
-        <h1>Answers: </h1>
         {selectedQuestion.answers &&
           selectedQuestion.answers.map((answers, idx) => {
             return (
               <div key={idx} class="box">
+                <h1>Answer: </h1>
                 <p>{answers.answer}</p>
                 <h4> answered by: {answers.user}</h4>
               </div>

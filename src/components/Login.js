@@ -8,7 +8,7 @@ export const Login = ({ isLoggedIn, setToken }) => {
   const [errors, setErrors] = useState()
   const history = useHistory()
 
-  function handleSubmit (event) {
+  function handleLogin (event) {
     event.preventDefault()
     requestLogin(email, password)
       .then((data) => {
@@ -25,7 +25,7 @@ export const Login = ({ isLoggedIn, setToken }) => {
   return (
     <div className='Login'>
       <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLogin}>
         {errors && <div class='bg-red white pa3'>{errors}</div>}
 
         <div className='mv2'>

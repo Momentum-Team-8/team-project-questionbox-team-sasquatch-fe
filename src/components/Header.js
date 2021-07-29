@@ -20,17 +20,19 @@ export const Header = (props) => {
               <i class='fas fa-home' /> Home
             </button>
           </Link>
+          {token ? (
           <Link to='/profile'>
             <button class='button is-primary is-light'>
               <i class='far fa-user' /> Profile
             </button>
           </Link>
+          ) : (<></>)}
         </div>
         <div class='navbar-end'>
           <div class='navbar-item'>
             <div class='field has-addons'>
               <div class='buttons' className='field is-grouped'>
-                <div class='control'>
+                {/* <div class='control'>
                   <input
                     class='input'
                     type='text'
@@ -39,13 +41,15 @@ export const Header = (props) => {
                 </div>
                 <div class='control'>
                   <button class='button is-primary is-light'>Search</button>
-                </div>
+                </div> */}
               </div>
-              <Link to='/registration'>
+              {token ? (<></>)
+              : (<Link to='/registration'>
                 <button class='button is-primary is-light'>
                   <strong>Sign up</strong>
                 </button>
               </Link>
+              )}
               {token ? (
                 <button
                   class='button is-primary is-light'
