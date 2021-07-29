@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
 
-export const AnswerForm = () => {
+export const AnswerForm = ({ token }) => {
   const { id } = useParams();
   const [text, setText] = useState("");
   const [answer, setAnswer] = useState("");
@@ -23,7 +23,7 @@ export const AnswerForm = () => {
         },
         {
           headers: {
-            Authorization: "Token fe4ba9290bbdc508c1bd0369584bc981dbca214e",
+            Authorization: `Token ${token}`,
             "Content-Type": "application/json",
           },
         }
