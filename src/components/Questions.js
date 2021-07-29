@@ -12,8 +12,6 @@ export const Questions = ({ isLoggedIn }) => {
     })
   }, []);
 
-
-
   return loading
     ? 'Questions are loading...'
     : (
@@ -32,6 +30,7 @@ export const Questions = ({ isLoggedIn }) => {
             </Link>
             <p>{ask.body}</p>
             <h4> asked by: {ask.user}</h4>
+            <h4> asked on: {ask.created_at}</h4>
           </div>
         );
       })}
