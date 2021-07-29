@@ -5,6 +5,7 @@ import { requestLogout } from '../api';
 export const Header = (props) => {
   const { token, setToken } = props
   let history = useHistory()
+
   const handleLogout = () => {
     requestLogout(token)
     setToken('')

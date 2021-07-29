@@ -5,6 +5,7 @@ import { getQuestions } from "../api.js";
 export const Questions = ({ isLoggedIn }) => {
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true)
+
   useEffect(() => {
     getQuestions().then((questions) => {
       setQuestions(questions)

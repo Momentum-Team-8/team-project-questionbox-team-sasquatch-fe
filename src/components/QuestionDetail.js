@@ -7,12 +7,14 @@ export const QuestionDetail = ({ token }) => {
   const { id } = useParams();
   const [selectedQuestion, setSelectedQuestion] = useState({});
   const [loading, setLoading] = useState(true)
+
   useEffect(() => {
     getQuestionDetail(id).then((data) => {
       setSelectedQuestion(data);
       setLoading(false)
     });
   }, [id, selectedQuestion]);
+
   return loading
     ? 'Question details are loading...'
     : (
