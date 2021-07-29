@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
-export const Registration = () => {
+export const Registration = (props) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -23,7 +23,7 @@ export const Registration = () => {
       )
       .then((response) => {
         console.log(response)
-        history.push("/questions");
+        history.push("/login");
       });
   }
   return (
@@ -66,7 +66,7 @@ export const Registration = () => {
             <input
               class="input"
               type="password"
-              placeholder="Password input"
+              placeholder="Password (must be longer than 6 digits)"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
             />
