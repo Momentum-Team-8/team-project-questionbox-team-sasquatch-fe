@@ -24,7 +24,7 @@ export const QuestionForm = ({ token }) => {
         },
         {
           headers: {
-            Authorization: "Token fe4ba9290bbdc508c1bd0369584bc981dbca214e",
+            Authorization: `Token ${token}`,
             "Content-Type": "application/json",
           },
         }

@@ -13,7 +13,7 @@ export function requestLogout (token) {
     .post('https://questionbox-sasmothbe.herokuapp.com/auth/token/logout',
       {
         headers: {
-          Authorization: `Token ${token}`, 
+          Authorization: `Token ${token}`,
           'Content-Type': 'application/json'
         }
       })
