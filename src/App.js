@@ -45,7 +45,7 @@ function App () {
               <Login isLoggedIn={isLoggedIn} token={token} setToken={setToken} />
             )}
           />
-          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/profile" component={() => <Profile token={token} />} />
         </Switch>
       </div>
     </Router>
