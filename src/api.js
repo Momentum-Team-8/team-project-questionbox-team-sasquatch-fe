@@ -31,3 +31,33 @@ export function getQuestionDetail (id) {
     .get(`https://questionbox-sasmothbe.herokuapp.com/api/questions/${id}/`)
     .then((res) => res.data)
 }
+
+export function deleteQuestion (token, id) {
+  return axios
+    .delete(
+    `https://questionbox-sasmothbe.herokuapp.com/api/questions/${id}/`,
+    {
+      headers: {
+        Authorization: `Token ${token}`,
+        'Content-Type': 'application/json'
+      }
+    }
+    )
+}
+
+export function deleteAnswer (token, id) {
+  return axios
+    .delete(
+    `https://questionbox-sasmothbe.herokuapp.com/api/answers/${id}/delete/`,
+    {
+      headers: {
+        Authorization: `Token ${token}`,
+        'Content-Type': 'application/json'
+      }
+    }
+    )
+}
+
+export function editAnswer (token, id) {
+  
+}

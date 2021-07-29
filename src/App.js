@@ -13,7 +13,6 @@ import { useLocalStorageState } from "use-local-storage-state";
 function App () {
   // Lines 19-27, 55 added for login purposes
   const [token, setToken] = useLocalStorageState('token', '');
-
   const isLoggedIn = token;
 
   return (
